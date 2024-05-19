@@ -19,8 +19,10 @@
         </Grid.RowDefinitions>
         <Button
             Grid.Row="0"
-            Grid.Column="1"
-            Margin="100,25,0,0"
+            Grid.Column="2"
+            Margin="100,20"
+            Width="100"
+            Height="35"
             HorizontalAlignment="Right"
             VerticalAlignment="Top"
             Content="Add +"
@@ -28,20 +30,34 @@
         <TextBox
             Grid.Row="0"
             Grid.Column="0"
-            Margin="100,25,0,0"
-            HorizontalAlignment="Left"
+            Margin="100,20"
+            Padding="10"
             VerticalAlignment="Top"
+            Width="220"
+            Style="{StaticResource MaterialDesignOutlinedTextBox}"
             materialDesign:HintAssist.Hint="Search Doctors..."
             Text="{Binding SearchText, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+        <ComboBox
+            Grid.Row="0"
+            Grid.Column="1"
+            Margin="100,20"
+            Padding="10"
+            Width="250"
+            materialDesign:HintAssist.Hint="Select Specialization"
+            materialDesign:TextFieldAssist.HasClearButton="True"
+            Style="{StaticResource MaterialDesignOutlinedComboBox}"
+            ItemsSource="{Binding Specializations}">
+        </ComboBox>
+        <Button Content="21" Grid.Column="2" Grid.Row="2" Background="AntiqueWhite"/>
         <materialDesign:Card
             Grid.Row="1"
             Grid.ColumnSpan="3"
             Margin="100,25,100,25">
             <DataGrid
                 AutoGenerateColumns="False"
+                Background="GhostWhite"
                 IsReadOnly="True"
-                ItemsSource="{Binding Doctors}"
-                Background="GhostWhite">
+                ItemsSource="{Binding Doctors}">
                 <DataGrid.Columns>
                     <DataGridTextColumn
                         Width="150"
