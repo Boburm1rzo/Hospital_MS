@@ -1,0 +1,72 @@
+﻿<UserControl
+    x:Class="Hospital.Views.PatientsView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:Hospital.Views"
+    xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+    <Grid Background="#E6F2FE">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.1*" />
+            <RowDefinition Height="1*" />
+        </Grid.RowDefinitions>
+        <TextBox
+            Grid.Column="0"
+            Margin="100,25,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            materialDesign:HintAssist.Hint="Search patients..."
+            Style="{StaticResource MaterialDesignOutlinedTextBox}"
+            Text="{Binding SearchText, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+        <Button
+            Grid.Column="1"
+            Command="{Binding AddCommand}"
+            Margin="0,25,100,0"
+            HorizontalAlignment="Right"
+            VerticalAlignment="Top"
+            Content="Add +" />
+        <materialDesign:Card
+            Grid.Row="1"
+            Grid.ColumnSpan="2"
+            Margin="100,10,100,10">
+            <DataGrid
+                AutoGenerateColumns="False"
+                Background="GhostWhite"
+                IsReadOnly="True"
+                ItemsSource="{Binding Patients}">
+                <DataGrid.Columns>
+                    <DataGridTextColumn
+                        Width="150"
+                        Binding="{Binding Id}"
+                        Header="Patient Id" />
+                    <DataGridTextColumn
+                        Width="150"
+                        Binding="{Binding FirstName}"
+                        Header="First name" />
+                    <DataGridTextColumn
+                        Width="150"
+                        Binding="{Binding LastName}"
+                        Header="Last name" />
+                    <DataGridTextColumn
+                        Width="200"
+                        Binding="{Binding PhoneNumber}"
+                        Header="Phone number" />
+                    <DataGridTextColumn
+                        Width="150"
+                        Binding="{Binding Birthdate, StringFormat='{}{0:dd-MMM-yyyy}'}"
+                        Header="Birthdate" />
+                    <DataGridTextColumn
+                        Width="125"
+                        Binding="{Binding Gender}"
+                        Header="Gender" />
+                </DataGrid.Columns>
+            </DataGrid>
+        </materialDesign:Card>
+    </Grid>
+</UserControl>

@@ -1,0 +1,62 @@
+﻿<UserControl
+    x:Class="Hospital.Views.DoctorsView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:Hospital.Views"
+    xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+    <Grid Background="#E6F2FE">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.1*" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Button
+            Grid.Row="0"
+            Grid.Column="1"
+            Margin="100,25,0,0"
+            HorizontalAlignment="Right"
+            VerticalAlignment="Top"
+            Content="Add +"
+            Style="{StaticResource MaterialDesignRaisedDarkButton}" />
+        <TextBox
+            Grid.Row="0"
+            Grid.Column="0"
+            Margin="100,25,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            materialDesign:HintAssist.Hint="Search Doctors..."
+            Text="{Binding SearchText, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+        <materialDesign:Card
+            Grid.Row="1"
+            Grid.ColumnSpan="3"
+            Margin="100,25,100,25">
+            <DataGrid
+                AutoGenerateColumns="False"
+                IsReadOnly="True"
+                ItemsSource="{Binding Doctors}"
+                Background="GhostWhite">
+                <DataGrid.Columns>
+                    <DataGridTextColumn
+                        Width="150"
+                        Binding="{Binding FirstName}"
+                        Header="First Name" />
+                    <DataGridTextColumn
+                        Width="150"
+                        Binding="{Binding LastName}"
+                        Header="Last Name" />
+                    <DataGridTextColumn
+                        Width="150"
+                        Binding="{Binding PhoneNumber}"
+                        Header="Phone Number" />
+                </DataGrid.Columns>
+            </DataGrid>
+        </materialDesign:Card>
+    </Grid>
+</UserControl>

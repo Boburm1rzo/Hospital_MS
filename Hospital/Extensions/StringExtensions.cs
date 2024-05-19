@@ -1,0 +1,11 @@
+﻿using System.Runtime.CompilerServices;
+
+namespace Hospital.Extensions
+{
+    public static class StringExtensions
+    {
+        public static string GetShort(this string value,int maxLength=0)
+            =>value.Length>maxLength
+            ? string.Concat(value.AsSpan(0,maxLength),"..."): value;
+    }
+}
