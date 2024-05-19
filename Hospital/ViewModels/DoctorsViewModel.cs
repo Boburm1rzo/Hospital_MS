@@ -32,7 +32,7 @@ namespace Hospital.ViewModels
             set
             {
                 SetProperty(ref _searchText, value);
-                Search(value);
+                Search();
             }
         }
         public DoctorsViewModel()
@@ -50,15 +50,21 @@ namespace Hospital.ViewModels
             var doctors = _doctorsService.GetDoctors();
             var specializations = _specializationsService.GetAll();
             Doctors.Clear();
+            Specializations.Clear();
             foreach (Doctor doctor in doctors)
             {
                 Doctors.Add(doctor);
             }
+            foreach(Specialization specialization in specializations)
+            {
+                Specializations.Add(specialization);
+            }
+
         }
          
-        private void Search(string searchText)
+        private void Search()
         {
-            var doctors = _doctorsService.GetDoctors(searchText);
+            var doctors = _doctorsService.GetDoctors(_searchText,_selectedSpecialization?.Id);
             Doctors.Clear();
             foreach (Doctor doctor in doctors)
             {

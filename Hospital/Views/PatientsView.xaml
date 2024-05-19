@@ -28,9 +28,12 @@
             Grid.Column="1"
             Command="{Binding AddCommand}"
             Margin="0,25,100,0"
+            Width="100"
+            Height="35"
             HorizontalAlignment="Right"
             VerticalAlignment="Top"
-            Content="Add +" />
+            Content="Add +"
+            Style="{StaticResource MaterialDesignRaisedDarkButton}"/>
         <materialDesign:Card
             Grid.Row="1"
             Grid.ColumnSpan="2"
@@ -40,6 +43,29 @@
                 Background="GhostWhite"
                 IsReadOnly="True"
                 ItemsSource="{Binding Patients}">
+                <DataGrid.InputBindings>
+                    <MouseBinding Command="{Binding ShowDetailsCommand}" Gesture="LeftDoubleClick"/>
+                </DataGrid.InputBindings>
+                <DataGrid.ContextMenu>
+                    <ContextMenu>
+                        <MenuItem Command="{Binding EditCommand}" CommandParameter="{Binding RelativeSource={RelativeSource FindAncestor,AncestorType={x:Type ContextMenu}},Path=PlacementTarget.selectedItem}">
+                            <MenuItem.Icon>
+                                <materialDesign:PackIcon Foreground="#c79d20" Kind="Pencil" />
+                            </MenuItem.Icon>
+                            <MenuItem.Header>
+                                <Label Content="Edit" Foreground="#c79d20" FontWeight="Bold"/>
+                            </MenuItem.Header>
+                        </MenuItem>
+                        <MenuItem Command="{Binding DeleteCommand}" CommandParameter="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ContextMenu}}, Path=PlacementTarget.SelectedItem}">
+                            <MenuItem.Icon>
+                                <materialDesign:PackIcon Foreground="#a32e45" Kind="TrashCan" />
+                            </MenuItem.Icon>
+                            <MenuItem.Header>
+                                <Label Content="Delete" Foreground="#a32e45" />
+                            </MenuItem.Header>
+                        </MenuItem>
+                    </ContextMenu>
+                </DataGrid.ContextMenu>
                 <DataGrid.Columns>
                     <DataGridTextColumn
                         Width="150"

@@ -22,6 +22,11 @@ public class DoctorsService
                                             x.LastName.Contains(searchText) ||
                                             x.PhoneNumber.Contains(searchText));
         }
+        if (specializationId is not null)
+        {
+            query = query.Where(x => x.Appointments.Any(x => x.Id == specializationId));
+        }
+
         return query.ToList();
     }
     public Doctor? GetDoctorById(int id) => _context.Doctors.FirstOrDefault(x => x.Id == id);

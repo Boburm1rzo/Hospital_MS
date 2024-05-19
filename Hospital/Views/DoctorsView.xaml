@@ -26,6 +26,7 @@
             HorizontalAlignment="Right"
             VerticalAlignment="Top"
             Content="Add +"
+            Command="{Binding AddCommand}"
             Style="{StaticResource MaterialDesignRaisedDarkButton}" />
         <TextBox
             Grid.Row="0"
@@ -41,14 +42,15 @@
             Grid.Row="0"
             Grid.Column="1"
             Margin="100,20"
-            Padding="10"
+            Padding="4"
+            Height="35"
             Width="250"
-            materialDesign:HintAssist.Hint="Select Specialization"
+            HorizontalAlignment="Center"
+            materialDesign:HintAssist.Hint="Specialization"
             materialDesign:TextFieldAssist.HasClearButton="True"
-            Style="{StaticResource MaterialDesignOutlinedComboBox}"
-            ItemsSource="{Binding Specializations}">
-        </ComboBox>
-        <Button Content="21" Grid.Column="2" Grid.Row="2" Background="AntiqueWhite"/>
+            ItemsSource="{Binding Specializations}"
+            SelectedItem="{Binding SelectedSpecialization}"
+            Style="{StaticResource MaterialDesignOutlinedComboBox}"/>
         <materialDesign:Card
             Grid.Row="1"
             Grid.ColumnSpan="3"
