@@ -2,10 +2,8 @@
 using Hospital.Views.Dialogs;
 using HospitalManagementSystem.Models;
 using MvvmHelpers;
-using MvvmHelpers.Commands;
 using System.Collections.ObjectModel;
 using System.Windows.Input;
-using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
 using Command = MvvmHelpers.Commands.Command;
 
 namespace Hospital.ViewModels
