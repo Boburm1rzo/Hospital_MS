@@ -39,6 +39,7 @@
             FontSize="24"
             FontWeight="Bold" />
         <TextBox
+            x:Name="FirstNameInput"
             Grid.Row="1"
             Grid.ColumnSpan="3"
             Height="40"
@@ -48,6 +49,7 @@
             Style="{StaticResource MaterialDesignOutlinedTextBox}"
             Text="{Binding FirstName}" />
         <TextBox
+            x:Name="LastNameInput"
             Grid.Row="1"
             Grid.Column="3"
             Grid.ColumnSpan="3"
@@ -57,6 +59,7 @@
             md:HintAssist.Hint="Enter Last Name"
             Style="{StaticResource MaterialDesignOutlinedTextBox}" />
         <DatePicker
+            x:Name="DateInput"
             Grid.Row="2"
             Grid.ColumnSpan="2"
             Height="40"
@@ -66,6 +69,7 @@
             Style="{StaticResource MaterialDesignOutlinedDatePicker}"
             Text="{Binding Birthdate}" />
         <ComboBox
+            x:Name="GenderInput"
             Grid.Row="2"
             Grid.Column="2"
             Grid.ColumnSpan="2"
@@ -75,8 +79,12 @@
             md:HintAssist.Hint="Select Gender"
             md:TextFieldAssist.HasClearButton="True"
             ItemsSource="{Binding SelectedGender}"
-            Style="{StaticResource MaterialDesignOutlinedComboBox}" />
+            Style="{StaticResource MaterialDesignOutlinedComboBox}">
+            <ComboBoxItem Content="Male" />
+            <ComboBoxItem Content="Female" />
+        </ComboBox>
         <TextBox
+            x:Name="PhoneInput"
             Grid.Row="2"
             Grid.Column="4"
             Grid.ColumnSpan="2"
@@ -92,6 +100,7 @@
             Width="200"
             Height="35"
             Margin="20,0"
+            Click="CancelButton"
             Content="Cancel"
             FontWeight="Bold"
             Style="{StaticResource MaterialDesignPaperDarkButton}" />
@@ -104,6 +113,7 @@
             Margin="20,0"
             Background="#2ec96f"
             BorderBrush="#2ec96f"
+            Click="SaveButton"
             Content="Save"
             FontWeight="Bold"
             Style="{StaticResource MaterialDesignFlatDarkBgButton}" />

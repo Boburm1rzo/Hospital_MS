@@ -1,16 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Hospital.Data;
+using HospitalManagementSystem.Models;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace Hospital.Views.Dialogs
 {
@@ -19,9 +9,29 @@ namespace Hospital.Views.Dialogs
     /// </summary>
     public partial class PatientsDialog : Window
     {
+        private readonly HospitalDBContext _context;
         public PatientsDialog()
         {
             InitializeComponent();
+            _context = new HospitalDBContext();
+        }
+
+        private void SaveButton(object sender, RoutedEventArgs e)
+        {
+            var patient = new Patient()
+            {
+                FirstName = FirstNameInput.Text,
+                LastName = LastNameInput.Text,
+                PhoneNumber = PhoneInput.Text,
+                Birthdate = DateOnly.Parse(DateInput.Text),
+                Gender = GenderInput.Text == "Female" ? Gender.Female : Gender.Male
+            };
+            _context.Patients.Add(patient);
+            Close();
+        }
+        private void CancelButton(object sender, RoutedEventArgs e)
+        {
+            Close();
         }
     }
 }

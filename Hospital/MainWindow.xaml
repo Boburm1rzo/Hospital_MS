@@ -56,6 +56,7 @@
                             <TextBlock HorizontalAlignment="Center" Text="Specs" />
                         </StackPanel>
                     </TabItem.Header>
+                    <views:SpecializatonsView/>
                 </TabItem>
                 <TabItem>
                     <TabItem.Header>

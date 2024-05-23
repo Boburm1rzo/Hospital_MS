@@ -11,9 +11,17 @@ namespace Hospital.Services
         {
             _context = new HospitalDBContext();
         }
-        public List<Specialization> GetAll()
+        public List<Specialization> GetAll(string SearchText="")
         {
-            return _context.Specializations.ToList();
+            var query = _context.Specializations
+                .AsNoTracking()
+                .AsQueryable();
+            if(!string.IsNullOrEmpty(SearchText))
+            {
+                query = _context.Specializations.Where(x => x.Name.Contains(SearchText));
+            }    
+
+            return query.ToList();
         }
 
 

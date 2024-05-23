@@ -20,37 +20,36 @@
         <Button
             Grid.Row="0"
             Grid.Column="2"
-            Margin="100,20"
             Width="100"
             Height="35"
+            Margin="100,20"
             HorizontalAlignment="Right"
             VerticalAlignment="Top"
-            Content="Add +"
             Command="{Binding AddCommand}"
+            Content="Add +"
             Style="{StaticResource MaterialDesignRaisedDarkButton}" />
         <TextBox
-            Grid.Row="0"
             Grid.Column="0"
-            Margin="100,20"
-            Padding="10"
+            Margin="100,25,0,0"
+            HorizontalAlignment="Left"
             VerticalAlignment="Top"
-            Width="220"
-            Style="{StaticResource MaterialDesignOutlinedTextBox}"
             materialDesign:HintAssist.Hint="Search Doctors..."
+            Style="{StaticResource MaterialDesignOutlinedTextBox}"
             Text="{Binding SearchText, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+
         <ComboBox
             Grid.Row="0"
             Grid.Column="1"
-            Margin="100,20"
-            Padding="4"
-            Height="35"
             Width="250"
-            HorizontalAlignment="Center"
+            Height="35"
+            Margin="122,33,0,0"
+            Padding="4"
+            HorizontalAlignment="Left"
             materialDesign:HintAssist.Hint="Specialization"
             materialDesign:TextFieldAssist.HasClearButton="True"
             ItemsSource="{Binding Specializations}"
             SelectedItem="{Binding SelectedSpecialization}"
-            Style="{StaticResource MaterialDesignOutlinedComboBox}"/>
+            Style="{StaticResource MaterialDesignOutlinedComboBox}" VerticalAlignment="Top" />
         <materialDesign:Card
             Grid.Row="1"
             Grid.ColumnSpan="3"

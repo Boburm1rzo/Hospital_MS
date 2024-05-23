@@ -1,8 +1,13 @@
 ﻿using Hospital.Services;
 using Hospital.Views.Dialogs;
 using HospitalManagementSystem.Models;
+using Microsoft.Identity.Client;
 using MvvmHelpers;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Forms;
 using System.Windows.Input;
 using Command = MvvmHelpers.Commands.Command;
 
@@ -21,19 +26,26 @@ namespace Hospital.ViewModels
                 SearchPatients(value);
             }
         }
+        public ObservableCollection<Gender> Genders { get; }
         public ObservableCollection<Patient> Patients { get; }
         public ICommand AddCommand { get; }
+        public ICommand SaveCommand { get; }
+        public ICommand CancelCommand { get; }
         public PatientsViewModel()
         {
             _patientsService = new PatientsService();
             Patients = new ObservableCollection<Patient>();
             AddCommand = new Command(OnAdd);
+            SaveCommand = new Command(OnSave);
+            CancelCommand = new Command(OnCancel);
+            Genders=new ObservableCollection<Gender>();
             Load();
         }
         public void Load()
         {
             var patients = _patientsService.GetPatients();
             Patients.Clear();
+            
             foreach (var patient in patients)
             {
                 Patients.Add(patient);
@@ -52,6 +64,14 @@ namespace Hospital.ViewModels
         {
             var dialog = new PatientsDialog();
             dialog.ShowDialog();
+        }
+        public void OnSave()
+        {
+            
+        }
+        public void OnCancel()
+        {
+            
         }
     }
 }
