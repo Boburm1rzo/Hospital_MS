@@ -17,25 +17,24 @@ using System.Windows.Shapes;
 namespace Hospital.Views.Dialogs
 {
     /// <summary>
-    /// Interaction logic for DoctorsDialog.xaml
+    /// Interaction logic for VisitsDialog.xaml
     /// </summary>
-    public partial class DoctorsDialog : Window
+    public partial class VisitsDialog : Window
     {
-        private readonly DoctorsService _service;
-        public DoctorsDialog()
+        private readonly VisitsService _service;
+        public VisitsDialog()
         {
             InitializeComponent();
-            _service= new DoctorsService();
+            _service=new VisitsService();
         }
         private void SaveButton(object sender, RoutedEventArgs e)
         {
-            var doctor = new Doctor()
+            var visit = new Visit()
             {
-                FirstName = FirstNameInput.Text,
-                LastName = LastNameInput.Text,
-                PhoneNumber = PhoneNumberInput.Text
+                Comments = CommentsInput.Text,
+                TotalDue = decimal.Parse(TotalDueInput.Text)
             };
-            _service.Create(doctor);
+            _service.Create(visit);
             Close();
         }
         private void CancelButton(object sender, RoutedEventArgs e)

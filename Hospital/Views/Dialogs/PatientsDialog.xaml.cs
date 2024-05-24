@@ -1,4 +1,5 @@
 ﻿using Hospital.Data;
+using Hospital.Services;
 using HospitalManagementSystem.Models;
 using System.Windows;
 
@@ -9,11 +10,11 @@ namespace Hospital.Views.Dialogs
     /// </summary>
     public partial class PatientsDialog : Window
     {
-        private readonly HospitalDBContext _context;
+        private readonly PatientsService _patientsService;
         public PatientsDialog()
         {
             InitializeComponent();
-            _context = new HospitalDBContext();
+            _patientsService= new PatientsService();
         }
 
         private void SaveButton(object sender, RoutedEventArgs e)
@@ -26,7 +27,7 @@ namespace Hospital.Views.Dialogs
                 Birthdate = DateOnly.Parse(DateInput.Text),
                 Gender = GenderInput.Text == "Female" ? Gender.Female : Gender.Male
             };
-            _context.Patients.Add(patient);
+            _patientsService.Create(patient);
             Close();
         }
         private void CancelButton(object sender, RoutedEventArgs e)

@@ -23,6 +23,11 @@ namespace Hospital.Services
 
             return query.ToList();
         }
+        public void Create(Specialization specialization)
+        {
+            _context.Specializations.Add(specialization);
+            _context.SaveChanges();
+        }
 
 
     }

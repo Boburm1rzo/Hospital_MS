@@ -69,6 +69,7 @@
                             <TextBlock HorizontalAlignment="Center" Text="Visits" />
                         </StackPanel>
                     </TabItem.Header>
+                    <views:VisitsView/>
                 </TabItem>
             </TabControl>
         </materialDesign:Card>

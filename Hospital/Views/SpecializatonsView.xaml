@@ -21,7 +21,7 @@
             Margin="100,25,0,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
-            materialDesign:HintAssist.Hint="Search patients..."
+            materialDesign:HintAssist.Hint="Search Specializations..."
             Style="{StaticResource MaterialDesignOutlinedTextBox}"
             Text="{Binding SearchText, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
         <Button
@@ -39,6 +39,7 @@
             Grid.ColumnSpan="2"
             Margin="100,10,100,10">
             <DataGrid
+                AlternatingRowBackground="#BBBBBB"
                 AutoGenerateColumns="False"
                 Background="GhostWhite"
                 IsReadOnly="True"

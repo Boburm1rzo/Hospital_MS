@@ -20,9 +20,9 @@
         <Button
             Grid.Row="0"
             Grid.Column="2"
+            Margin="0,25,100,0"
             Width="100"
             Height="35"
-            Margin="100,20"
             HorizontalAlignment="Right"
             VerticalAlignment="Top"
             Command="{Binding AddCommand}"
@@ -55,6 +55,7 @@
             Grid.ColumnSpan="3"
             Margin="100,25,100,25">
             <DataGrid
+                AlternatingRowBackground="#BBBBBB"
                 AutoGenerateColumns="False"
                 Background="GhostWhite"
                 IsReadOnly="True"

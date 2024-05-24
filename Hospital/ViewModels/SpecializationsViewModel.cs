@@ -1,4 +1,5 @@
 ﻿using Hospital.Services;
+using Hospital.Views.Dialogs;
 using HospitalManagementSystem.Models;
 using MvvmHelpers;
 using MvvmHelpers.Commands;
@@ -50,7 +51,8 @@ namespace Hospital.ViewModels
         }
         public void OnAdd()
         {
-
+            var dialog = new SpecializationDialog();
+            dialog.ShowDialog();
         }
 
     }
