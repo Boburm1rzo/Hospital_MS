@@ -16,6 +16,9 @@ public class PatientsService
     {
         var query = _context.Patients
             .Include(x=>x.Appointments)
+            .ThenInclude(x=>x.Doctor)
+            .Include(x=>x.Appointments)
+            .ThenInclude(x=>x.Visit)
             .AsNoTracking()
             .AsQueryable();
 

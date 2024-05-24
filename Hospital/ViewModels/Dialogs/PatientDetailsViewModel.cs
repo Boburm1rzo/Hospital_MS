@@ -8,6 +8,18 @@ namespace Hospital.ViewModels.Dialogs
 {
     public class PatientDetailsViewModel:BaseViewModel
     {
+        private string _appointmentsTitle=string.Empty;
+        public string AppointmentsTitle
+        {
+            get => _appointmentsTitle;
+            set => SetProperty(ref _appointmentsTitle, value);
+        }
+        private string _historyTitle=string.Empty;
+        public string HistoryTitle
+        {
+            get=> _historyTitle;
+            set=> SetProperty(ref _historyTitle, value);
+        }
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public DateOnly Birthdate { get; set; }
@@ -16,6 +28,7 @@ namespace Hospital.ViewModels.Dialogs
         public ObservableCollection<Appointment> Appointments { get;  }
         public ObservableCollection<Visit> Visits { get;  }
         public ICommand SaveCommand { get;}
+
         public PatientDetailsViewModel(Patient patient)
         {
             ArgumentNullException.ThrowIfNull(patient);
@@ -31,6 +44,13 @@ namespace Hospital.ViewModels.Dialogs
                 .ToList();
             Visits=new ObservableCollection<Visit>(visits);
             SaveCommand = new Command(OnSave);
+            AppointmentsTitle = Appointments.Count > 0 
+                ? "Recent Appointments" 
+                : $"{LastName} {FirstName} has no recent appointments";
+            HistoryTitle = Visits.Count>0 
+                ?$"Patient Visits"
+                : $"{LastName} {FirstName} has no visits yet";
+
         }
         private void OnSave()
         {

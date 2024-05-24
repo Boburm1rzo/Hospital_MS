@@ -4,6 +4,7 @@ using HospitalManagementSystem.Models;
 using MvvmHelpers;
 using MvvmHelpers.Commands;
 using System.Collections.ObjectModel;
+using System.Windows;
 using System.Windows.Input;
 
 namespace Hospital.ViewModels
@@ -24,8 +25,8 @@ namespace Hospital.ViewModels
         private Patient _selectedPatient;
         public Patient SelectedPatient
         {
-            get=> _selectedPatient;
-            set=>SetProperty(ref _selectedPatient, value);
+            get => _selectedPatient;
+            set => SetProperty(ref _selectedPatient, value);
         }
         public ObservableCollection<Patient> Patients { get; }
         public ICommand AddCommand { get; }
@@ -69,13 +70,24 @@ namespace Hospital.ViewModels
         }
         public void OnEdit(Patient patient)
         {
-            var dialog = new PatientsDialog();
-            dialog.ShowDialog();
+            
         }
         public void OnDelete(Patient patient)
         {
-            var dialog = new PatientsDialog();
-            dialog.ShowDialog();
+            var result=MessageBox.Show($"Are you sure you want to delete:{patient.LastName} {patient.FirstName}?",
+                "Confirm your action",
+                MessageBoxButton.YesNo, 
+                MessageBoxImage.Warning);
+            if(result==MessageBoxResult.No)
+            {
+                return;
+            }
+            _patientsService.Delete(patient);
+            MessageBox.Show(
+               $"Patient: {patient.FirstName} {patient.LastName} successfully deleted.",
+               "Success",
+               MessageBoxButton.OK,
+               MessageBoxImage.Information);
         }
         public void OnShowDetails()
         {

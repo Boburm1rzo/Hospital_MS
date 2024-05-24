@@ -85,28 +85,83 @@
                 </Grid>
             </TabItem>
             <TabItem Header="Appoitments">
-                <Grid>
+                <StackPanel>
                     <Label
                         Margin="0,20,0,0"
                         HorizontalAlignment="Center"
-                        Content="Recent Appointments"
-                        FontSize="22" />
-                    <DataGrid
-                        Margin="50"
-                        CanUserAddRows="False"
-                        AutoGenerateColumns="False"
-                        ItemsSource="{Binding Appointments}" >
-                        <DataGrid.Columns>
-                            <DataGridTextColumn Header="Id" Binding="{Binding Id}" />
-                            <DataGridTextColumn Header="Date" Binding="{Binding Date}" />
-                            <DataGridTextColumn Header="Time" Binding="{Binding Time}" />
-                            <DataGridTextColumn Header="Status" Binding="{Binding Status}" />
-                            <DataGridTextColumn Header="Comments" Binding="{Binding CommentsShort}"/>
-                        </DataGrid.Columns>
-                    </DataGrid>
-                </Grid>
+                        Content="{Binding AppointmentsTitle}"
+                        FontSize="22"
+                        FontWeight="Bold" />
+                    <md:Card>
+                        <DataGrid
+                            Margin="50"
+                            AutoGenerateColumns="False"
+                            CanUserAddRows="False"
+                            CanUserResizeColumns="False"
+                            CanUserResizeRows="False"
+                            IsReadOnly="True"
+                            ItemsSource="{Binding Appointments}">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Binding="{Binding Id}" Header="Id" />
+                                <DataGridTextColumn Binding="{Binding Date}" Header="Date" />
+                                <DataGridTextColumn Binding="{Binding Time}" Header="Time" />
+                                <DataGridTextColumn Binding="{Binding Status}" Header="Status" />
+                                <DataGridTextColumn Binding="{Binding Doctor}" Header="Doctor" />
+                                <DataGridTemplateColumn>
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <Label Content="{Binding CommentsShort}">
+                                                <Label.ToolTip>
+                                                    <ToolTip Content="{Binding Comments}" />
+                                                </Label.ToolTip>
+                                            </Label>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </md:Card>
+                </StackPanel>
             </TabItem>
-            <TabItem Header="History" />
+            <TabItem Header="History">
+                <StackPanel>
+                    <Label
+                        Margin="0,20,0,0"
+                        HorizontalAlignment="Center"
+                        Content="{Binding HistoryTitle}"
+                        FontSize="22"
+                        FontWeight="Bold" />
+                    <md:Card>
+                        <DataGrid
+                            Margin="50"
+                            AutoGenerateColumns="False"
+                            CanUserAddRows="False"
+                            CanUserResizeColumns="False"
+                            CanUserResizeRows="False"
+                            IsReadOnly="True"
+                            ItemsSource="{Binding Visits}">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Binding="{Binding Id}" Header="Id" />
+                                <DataGridTextColumn Binding="{Binding Appointment.Date}" Header="Date" />
+                                <DataGridTextColumn Binding="{Binding Appointment.Time}" Header="Time" />
+                                <DataGridTextColumn Binding="{Binding TotalDue}" Header="Total Due" />
+                                <DataGridTextColumn Binding="{Binding Appointment.Doctor}" Header="Doctor" />
+                                <DataGridTemplateColumn>
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <Label Content="{Binding CommentsShort}">
+                                                <Label.ToolTip>
+                                                    <ToolTip Content="{Binding Comments}" />
+                                                </Label.ToolTip>
+                                            </Label>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </md:Card>
+                </StackPanel>
+            </TabItem>
         </TabControl>
         <Button
             Grid.Row="1"
