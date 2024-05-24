@@ -15,6 +15,7 @@ public class PatientsService
     public List<Patient> GetPatients(string searchText = "")
     {
         var query = _context.Patients
+            .Include(x=>x.Appointments)
             .AsNoTracking()
             .AsQueryable();
 

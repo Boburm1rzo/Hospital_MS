@@ -32,8 +32,19 @@
             Height="35"
             HorizontalAlignment="Right"
             VerticalAlignment="Top"
-            Content="Add +"
-            Style="{StaticResource MaterialDesignRaisedDarkButton}"/>
+            Style="{StaticResource MaterialDesignRaisedDarkButton}">
+            <StackPanel Orientation="Horizontal">
+                <Label Content="Add" Foreground="White"/>
+                <materialDesign:PackIcon
+                    VerticalAlignment="Center"
+                    Kind="Plus"
+                    Foreground="White"
+                    Height="20"
+                    Width="20"
+
+                    HorizontalAlignment="Center"/>
+            </StackPanel>
+        </Button>
         <materialDesign:Card
             Grid.Row="1"
             Grid.ColumnSpan="2"
@@ -42,7 +53,10 @@
                 AlternatingRowBackground="#BBBBBB"
                 AutoGenerateColumns="False"
                 Background="GhostWhite"
+                x:Name="PatientsDataGrid"
                 IsReadOnly="True"
+                IsSynchronizedWithCurrentItem="True"
+                SelectedItem="{Binding SelectedPatient}"
                 ItemsSource="{Binding Patients}">
                 <DataGrid.InputBindings>
                     <MouseBinding Command="{Binding ShowDetailsCommand}" Gesture="LeftDoubleClick"/>

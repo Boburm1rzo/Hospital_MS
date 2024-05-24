@@ -2,9 +2,9 @@
 using Hospital.Views.Dialogs;
 using HospitalManagementSystem.Models;
 using MvvmHelpers;
+using MvvmHelpers.Commands;
 using System.Collections.ObjectModel;
 using System.Windows.Input;
-using Command = MvvmHelpers.Commands.Command;
 
 namespace Hospital.ViewModels
 {
@@ -21,15 +21,26 @@ namespace Hospital.ViewModels
                 SearchPatients(value);
             }
         }
-        public ObservableCollection<Gender> Genders { get; }
+        private Patient _selectedPatient;
+        public Patient SelectedPatient
+        {
+            get=> _selectedPatient;
+            set=>SetProperty(ref _selectedPatient, value);
+        }
         public ObservableCollection<Patient> Patients { get; }
         public ICommand AddCommand { get; }
+        public ICommand EditCommand { get; }
+        public ICommand DeleteCommand { get; }
+        public ICommand ShowDetailsCommand { get; }
         public PatientsViewModel()
         {
             _patientsService = new PatientsService();
             Patients = new ObservableCollection<Patient>();
             AddCommand = new Command(OnAdd);
-            Genders = new ObservableCollection<Gender>();
+            EditCommand = new Command<Patient>(OnEdit);
+            DeleteCommand = new Command<Patient>(OnDelete);
+            ShowDetailsCommand = new Command(OnShowDetails);
+
             Load();
         }
         public void Load()
@@ -56,5 +67,24 @@ namespace Hospital.ViewModels
             var dialog = new PatientsDialog();
             dialog.ShowDialog();
         }
+        public void OnEdit(Patient patient)
+        {
+            var dialog = new PatientsDialog();
+            dialog.ShowDialog();
+        }
+        public void OnDelete(Patient patient)
+        {
+            var dialog = new PatientsDialog();
+            dialog.ShowDialog();
+        }
+        public void OnShowDetails()
+        {
+            if (SelectedPatient is null)
+                return;
+
+            var dialog = new PatientsDetailsDialog(SelectedPatient);
+            dialog.ShowDialog();
+        }
+
     }
 }
