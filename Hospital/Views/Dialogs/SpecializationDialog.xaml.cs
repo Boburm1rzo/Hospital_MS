@@ -13,14 +13,14 @@ namespace Hospital.Views.Dialogs
         public SpecializationDialog()
         {
             InitializeComponent();
-            _specializationsService= new SpecializationsService();  
+            _specializationsService = new SpecializationsService();
         }
         private void SaveButton(object sender, RoutedEventArgs e)
         {
             var specialization = new Specialization()
             {
-                Description=DescriptionInput.Text,
-                Name=NameInput.Text
+                Description = DescriptionInput.Text,
+                Name = NameInput.Text
             };
             _specializationsService.Create(specialization);
             Close();

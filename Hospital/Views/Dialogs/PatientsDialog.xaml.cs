@@ -1,5 +1,5 @@
-﻿using Hospital.Data;
-using Hospital.Services;
+﻿using Hospital.Services;
+using Hospital.ViewModels.Dialogs;
 using HospitalManagementSystem.Models;
 using System.Windows;
 
@@ -11,24 +11,24 @@ namespace Hospital.Views.Dialogs
     public partial class PatientsDialog : Window
     {
         private readonly PatientsService _patientsService;
+        private readonly bool isEditingMode;
         public PatientsDialog()
         {
             InitializeComponent();
+            DataContext = new PatientDialogViewModel();
             _patientsService= new PatientsService();
+            isEditingMode = false;
+            Title = "Add patient";
         }
-
-        private void SaveButton(object sender, RoutedEventArgs e)
+        public PatientsDialog(Patient patient) : this()
         {
-            var patient = new Patient()
-            {
-                FirstName = FirstNameInput.Text,
-                LastName = LastNameInput.Text,
-                PhoneNumber = PhoneInput.Text,
-                Birthdate = DateOnly.Parse(DateInput.Text),
-                Gender = GenderInput.Text == "Female" ? Gender.Female : Gender.Male
-            };
-            _patientsService.Create(patient);
-            Close();
+            Title = "Update patient";
+            isEditingMode=true;
+            FirstNameInput.Text = patient.FirstName.ToString();
+            LastNameInput.Text = patient.LastName.ToString();
+            PhoneInput.Text = patient.PhoneNumber.ToString();
+            DateInput.Text = patient.Birthdate.ToString();  
+            GenderInput.Text = patient.Gender.ToString();
         }
         private void CancelButton(object sender, RoutedEventArgs e)
         {

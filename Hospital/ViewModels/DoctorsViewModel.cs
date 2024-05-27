@@ -24,7 +24,7 @@ namespace Hospital.ViewModels
         public Doctor SelectedDoctor
         {
             get => _selectedDoctor;
-            set=>SetProperty(ref _selectedDoctor, value);
+            set => SetProperty(ref _selectedDoctor, value);
         }
 
         private Specialization _selectedSpecialization;
@@ -97,9 +97,9 @@ namespace Hospital.ViewModels
         }
         private void OnDelete(Doctor doctor)
         {
-            var result = MessageBox.Show($"Are you sure you want delete:{doctor.LastName} {doctor.FirstName}?" , 
+            var result = MessageBox.Show($"Are you sure you want delete:{doctor.LastName} {doctor.FirstName}?",
             "Confirm your action",
-                MessageBoxButton.YesNo, 
+                MessageBoxButton.YesNo,
                 MessageBoxImage.Warning);
             if (result == MessageBoxResult.No)
             {

@@ -2,7 +2,6 @@
 using Bogus.DataSets;
 using Hospital.Data;
 using HospitalManagementSystem.Models;
-using System.Diagnostics.Contracts;
 
 namespace Hospital.Services
 {
@@ -111,14 +110,14 @@ namespace Hospital.Services
             if (context.Appointments.Any())
                 return;
 
-            var doctorIds=context.Doctors.Select(d=>d.Id).ToArray();
-            var patientIds=context.Patients.Select(p=>p.Id).ToArray();
+            var doctorIds = context.Doctors.Select(d => d.Id).ToArray();
+            var patientIds = context.Patients.Select(p => p.Id).ToArray();
             var minDate = DateOnly.FromDateTime(DateTime.Now.AddYears(-2));
             var maxDate = DateOnly.FromDateTime(DateTime.Now.AddMonths(2));
             var minTime = TimeOnly.FromTimeSpan(TimeSpan.FromHours(8));
             var maxTime = TimeOnly.FromTimeSpan(TimeSpan.FromHours(20));
 
-            foreach(var patientId in patientIds)
+            foreach (var patientId in patientIds)
             {
                 var appointmentsCount = faker.Random.Number(1, 5);
                 for (var i = 0; i < appointmentsCount; i++)
@@ -147,7 +146,7 @@ namespace Hospital.Services
                 .Select(x => x.Id)
                 .ToArray();
 
-            foreach(var appointmentId in appointmentsIds)
+            foreach (var appointmentId in appointmentsIds)
             {
                 var visit = new Visit()
                 {

@@ -1,5 +1,4 @@
-﻿using Hospital.Services;
-using Hospital.ViewModels;
+﻿using Hospital.ViewModels;
 using System.Windows.Controls;
 
 namespace Hospital.Views

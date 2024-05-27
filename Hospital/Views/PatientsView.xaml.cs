@@ -1,7 +1,5 @@
 ﻿using Hospital.ViewModels;
-using System.Drawing.Text;
 using System.Windows.Controls;
-using System.Windows.Input;
 
 namespace Hospital.Views;
 

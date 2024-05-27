@@ -38,12 +38,13 @@ namespace Hospital.ViewModels
             _patientsService = new PatientsService();
             Patients = new ObservableCollection<Patient>();
             AddCommand = new Command(OnAdd);
-            EditCommand = new Command<Patient>(OnEdit);
+            EditCommand = new Command(OnEdit);
             DeleteCommand = new Command<Patient>(OnDelete);
             ShowDetailsCommand = new Command(OnShowDetails);
 
             Load();
         }
+
         public void Load()
         {
             var patients = _patientsService.GetPatients();
@@ -68,17 +69,18 @@ namespace Hospital.ViewModels
             var dialog = new PatientsDialog();
             dialog.ShowDialog();
         }
-        public void OnEdit(Patient patient)
+        public void OnEdit()
         {
-            
+            var dialog = new PatientsDialog(SelectedPatient);
+            dialog.ShowDialog();
         }
         public void OnDelete(Patient patient)
         {
-            var result=MessageBox.Show($"Are you sure you want to delete:{patient.LastName} {patient.FirstName}?",
+            var result = MessageBox.Show($"Are you sure you want to delete:{patient.LastName} {patient.FirstName}?",
                 "Confirm your action",
-                MessageBoxButton.YesNo, 
+                MessageBoxButton.YesNo,
                 MessageBoxImage.Warning);
-            if(result==MessageBoxResult.No)
+            if (result == MessageBoxResult.No)
             {
                 return;
             }

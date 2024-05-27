@@ -56,24 +56,27 @@
             Grid.ColumnSpan="3"
             Margin="100,25,100,25">
             <DataGrid
-                AlternatingRowBackground="#BBBBBB"
+                AlternatingRowBackground="Lightblue"
                 AutoGenerateColumns="False"
                 Background="GhostWhite"
                 IsReadOnly="True"
-                SelectedItem="{Binding SelectedDoctor}"
-                ItemsSource="{Binding Doctors}">
+                ItemsSource="{Binding Doctors}"
+                SelectedItem="{Binding SelectedDoctor}">
 
                 <DataGrid.InputBindings>
                     <MouseBinding Command="{Binding ShowDetailsCommand}" Gesture="LeftDoubleClick" />
                 </DataGrid.InputBindings>
                 <DataGrid.ContextMenu>
                     <ContextMenu>
-                        <MenuItem Command="{Binding EditCommand}" CommandParameter="{Binding RelativeSource={RelativeSource FindAncestor,AncestorType={x:Type ContextMenu}},Path=PlacementTarget.selectedItem}">
+                        <MenuItem Command="{Binding EditCommand}" CommandParameter="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ContextMenu}}, Path=PlacementTarget.selectedItem}">
                             <MenuItem.Icon>
                                 <materialDesign:PackIcon Foreground="#c79d20" Kind="Pencil" />
                             </MenuItem.Icon>
                             <MenuItem.Header>
-                                <Label Content="Edit" Foreground="#c79d20" FontWeight="Bold"/>
+                                <Label
+                                    Content="Edit"
+                                    FontWeight="Bold"
+                                    Foreground="#c79d20" />
                             </MenuItem.Header>
                         </MenuItem>
                         <MenuItem Command="{Binding DeleteCommand}" CommandParameter="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ContextMenu}}, Path=PlacementTarget.SelectedItem}">

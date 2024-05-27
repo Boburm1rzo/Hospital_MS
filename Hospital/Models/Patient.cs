@@ -1,6 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
-
-namespace HospitalManagementSystem.Models
+﻿namespace HospitalManagementSystem.Models
 {
     public class Patient
     {

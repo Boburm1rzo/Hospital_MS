@@ -1,11 +1,6 @@
 ﻿using Hospital.Data;
 using HospitalManagementSystem.Models;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Hospital.Services
 {
@@ -20,7 +15,7 @@ namespace Hospital.Services
         {
             var query = _context.Appointments
                 .AsNoTracking()
-                .Include(x=>x.Doctor)
+                .Include(x => x.Doctor)
                 .AsQueryable();
             return query.ToList();
         }

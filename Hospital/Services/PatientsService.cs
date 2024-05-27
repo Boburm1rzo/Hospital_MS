@@ -15,10 +15,10 @@ public class PatientsService
     public List<Patient> GetPatients(string searchText = "")
     {
         var query = _context.Patients
-            .Include(x=>x.Appointments)
-            .ThenInclude(x=>x.Doctor)
-            .Include(x=>x.Appointments)
-            .ThenInclude(x=>x.Visit)
+            .Include(x => x.Appointments)
+            .ThenInclude(x => x.Doctor)
+            .Include(x => x.Appointments)
+            .ThenInclude(x => x.Visit)
             .AsNoTracking()
             .AsQueryable();
 

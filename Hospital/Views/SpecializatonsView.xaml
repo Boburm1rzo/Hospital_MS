@@ -39,7 +39,7 @@
             Grid.ColumnSpan="2"
             Margin="100,10,100,10">
             <DataGrid
-                AlternatingRowBackground="#BBBBBB"
+                AlternatingRowBackground="Lightblue"
                 AutoGenerateColumns="False"
                 Background="GhostWhite"
                 IsReadOnly="True"

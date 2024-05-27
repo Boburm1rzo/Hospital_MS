@@ -1,6 +1,5 @@
 ﻿using HospitalManagementSystem.Models;
 using Microsoft.EntityFrameworkCore;
-using System.Windows.Media.Animation;
 
 namespace Hospital.Data
 {
@@ -11,7 +10,7 @@ namespace Hospital.Data
         public virtual DbSet<Visit> Visits { get; set; }
         public virtual DbSet<Appointment> Appointments { get; set; }
         public virtual DbSet<Specialization> Specializations { get; set; }
-        public virtual DbSet<DoctorSpecialization>  DoctorSpecialization { get; set; }
+        public virtual DbSet<DoctorSpecialization> DoctorSpecialization { get; set; }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseSqlServer("Data Source=DESKTOP-FB3OGEQ;Initial Catalog=Hospital_MS;Integrated Security=True;Trust Server Certificate=True");
@@ -52,9 +51,9 @@ namespace Hospital.Data
                 .HasKey(x => x.Id);
 
             modelBuilder.Entity<Appointment>()
-                .HasOne(a=>a.Visit)
-                .WithOne(x=>x.Appointment)
-                .HasForeignKey<Visit>(e=>e.AppointmentId);
+                .HasOne(a => a.Visit)
+                .WithOne(x => x.Appointment)
+                .HasForeignKey<Visit>(e => e.AppointmentId);
 
             modelBuilder.Entity<DoctorSpecialization>()
                 .ToTable(nameof(DoctorSpecialization));

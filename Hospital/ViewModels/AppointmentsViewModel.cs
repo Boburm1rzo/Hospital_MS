@@ -1,21 +1,17 @@
 ﻿using Hospital.Services;
+using Hospital.Views.Dialogs;
 using HospitalManagementSystem.Models;
 using MvvmHelpers;
 using MvvmHelpers.Commands;
-using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Input;
 
 namespace Hospital.ViewModels
 {
-    public class AppointmentsViewModel:BaseViewModel
+    public class AppointmentsViewModel : BaseViewModel
     {
         private readonly AppointmentService _appointmentService;
-        public ObservableCollection<Appointment > Appointments { get;}
+        public ObservableCollection<Appointment> Appointments { get; }
         public ICommand AddCommand { get; }
         public AppointmentsViewModel()
         {
@@ -26,7 +22,7 @@ namespace Hospital.ViewModels
         }
         public void OnAdd()
         {
-
+            var dialog = new AppointmentsDialog();
         }
         public void Load()
         {

@@ -7,19 +7,19 @@ namespace Hospital.Services
     public class SpecializationsService
     {
         private readonly HospitalDBContext _context;
-        public SpecializationsService() 
+        public SpecializationsService()
         {
             _context = new HospitalDBContext();
         }
-        public List<Specialization> GetAll(string SearchText="")
+        public List<Specialization> GetAll(string SearchText = "")
         {
             var query = _context.Specializations
                 .AsNoTracking()
                 .AsQueryable();
-            if(!string.IsNullOrEmpty(SearchText))
+            if (!string.IsNullOrEmpty(SearchText))
             {
                 query = _context.Specializations.Where(x => x.Name.Contains(SearchText));
-            }    
+            }
 
             return query.ToList();
         }

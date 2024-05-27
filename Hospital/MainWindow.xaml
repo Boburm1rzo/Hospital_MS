@@ -18,7 +18,7 @@
             <TabControl
                 materialDesign:ColorZoneAssist.Mode="Standard"
                 materialDesign:ElevationAssist.Elevation="Dp0"
-                Background="#BBBBBB"
+                Background="Lightblue"
                 Style="{StaticResource MaterialDesignNavigationRailTabControl}">
                 <TabItem >
                     <TabItem.Header>

@@ -56,6 +56,7 @@
             Height="40"
             Margin="20,0"
             Padding="10"
+            Text="{Binding LastName}"
             md:HintAssist.Hint="Enter Last Name"
             Style="{StaticResource MaterialDesignOutlinedTextBox}" />
         <DatePicker
@@ -65,9 +66,9 @@
             Height="40"
             Margin="20,0"
             Padding="10"
+            SelectedDate="{Binding Birthdate}"
             md:HintAssist.Hint="Pick Birthdate"
-            Style="{StaticResource MaterialDesignOutlinedDatePicker}"
-            Text="{Binding Birthdate}" />
+            Style="{StaticResource MaterialDesignOutlinedDatePicker}"/>
         <ComboBox
             x:Name="GenderInput"
             Grid.Row="2"
@@ -78,7 +79,6 @@
             Padding="10"
             md:HintAssist.Hint="Select Gender"
             md:TextFieldAssist.HasClearButton="True"
-            ItemsSource="{Binding SelectedGender}"
             Style="{StaticResource MaterialDesignOutlinedComboBox}">
             <ComboBoxItem Content="Male" />
             <ComboBoxItem Content="Female" />
@@ -89,6 +89,7 @@
             Grid.Column="4"
             Grid.ColumnSpan="2"
             Height="40"
+            Text="{Binding PhoneNumber}"
             Margin="20,0"
             Padding="10"
             md:HintAssist.Hint="Enter Phone Number"
@@ -113,9 +114,10 @@
             Margin="20,0"
             Background="#2ec96f"
             BorderBrush="#2ec96f"
-            Click="SaveButton"
+            Command="{Binding SaveCommand}"
             Content="Save"
             FontWeight="Bold"
+            Click="CancelButton"
             Style="{StaticResource MaterialDesignFlatDarkBgButton}" />
 
     </Grid>
