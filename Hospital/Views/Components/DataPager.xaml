@@ -1,0 +1,66 @@
+﻿<UserControl
+    x:Class="Hospital.Views.Components.DataPager"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:helpers="clr-namespace:Hospital.Extensions"
+    xmlns:local="clr-namespace:Hospital.Views.Components"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+    <UserControl.Resources>
+        <helpers:PageTextColorConvertor x:Key="PaginationForegroundConvertor" />
+        <helpers:PageSizeColorConvertor x:Key="PaginationBackgroundConvertor" />
+    </UserControl.Resources>
+    <StackPanel Orientation="Horizontal">
+        <Button
+            Margin="20,5,10,10"
+            Background="Transparent"
+            Command="{Binding PreviousPageCommand}"
+            Content="Previous"
+            Foreground="Blue"
+            IsEnabled="{Binding HasPreviousPage, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+        <Button
+            Margin="0,5,0,10"
+            Background="{Binding IsFirstPageSelected, Converter={StaticResource PaginationBackgroundConvertor}}"
+            Command="{Binding FirstPageCommand}"
+            Content="{Binding FirstButtonContetn}"
+            Foreground="{Binding IsFirstPageSelected, Converter={StaticResource PaginationForegroundConvertor}}" />
+        <Button
+            Margin="0,5,0,10"
+            Background="{Binding IsSecondPageSelected, Converter={StaticResource PaginationBackgroundConvertor}}"
+            Command="{Binding SecondPageCommand}"
+            Content="{Binding SecondButtonContent}"
+            Foreground="{Binding IsSecondPageSelected, Converter={StaticResource PaginationForegroundConvertor}}"
+            Visibility="{Binding HasSecondPage, Converter={StaticResource BooleanToVisibilityConverter}}" />
+        <Button
+            Margin="0,5,0,10"
+            Background="{Binding IsThirdPageSelected, Converter={StaticResource PaginationBackgroundConvertor}}"
+            Command="{Binding ThirdPageCommand}"
+            Content="{Binding ThirdButtonContent}"
+            Foreground="{Binding IsThirdPageSelected, Converter={StaticResource PaginationForegroundConvertor}}"
+            Visibility="{Binding HasThirdPage, Converter={StaticResource BooleanToVisibilityConverter}}" />
+        <Button
+            Margin="10,5,20,10"
+            Background="Transparent"
+            Command="{Binding NextPageCommand}"
+            Content="Next"
+            Foreground="Blue"
+            IsEnabled="{Binding HasNextPage, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+        <Button
+            Background="{Binding IsFirstSizeSelected, Converter={StaticResource PaginationBackgroundConvertor}}"
+            Command="{Binding FirstSizeCommand}"
+            Content="15"
+            Foreground="{Binding IsFirstSizeSelected, Converter={StaticResource PaginationForegroundConvertor}}" />
+        <Button
+            Background="{Binding IsSecondSizeSelected, Converter={StaticResource PaginationBackgroundConvertor}}"
+            Command="{Binding SecondSizeCommand}"
+            Content="30"
+            Foreground="{Binding IsSecondSizeSelected, Converter={StaticResource PaginationForegroundConvertor}}" />
+        <Button
+            Background="{Binding IsThirdSizeSelected, Converter={StaticResource PaginationBackgroundConvertor}}"
+            Command="{Binding ThirdSizeCommand}"
+            Content="50"
+            Foreground="{Binding IsThirdSizeSelected, Converter={StaticResource PaginationForegroundConvertor}}" />
+    </StackPanel>
+
+</UserControl>

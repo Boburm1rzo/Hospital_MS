@@ -1,15 +1,13 @@
 ﻿using Hospital.Services;
 using HospitalManagementSystem.Models;
-using Microsoft.EntityFrameworkCore.Query;
 using MvvmHelpers;
 using MvvmHelpers.Commands;
-using System.CodeDom;
 using System.Windows;
 using System.Windows.Input;
 
 namespace Hospital.ViewModels.Dialogs
 {
-    public class PatientsUpdateViewModel:BaseViewModel
+    public class PatientsUpdateViewModel : BaseViewModel
     {
         private readonly PatientsService _patientsService;
         public string FirstName { get; set; }
@@ -24,11 +22,11 @@ namespace Hospital.ViewModels.Dialogs
             ArgumentNullException.ThrowIfNull(patient);
             _patientsService = new PatientsService();
             SaveCommand = new Command(OnSave);
-            FirstName=patient.FirstName;
-            LastName=patient.LastName;
-            Birthdate=patient.Birthdate;
-            PhoneNumber=patient.PhoneNumber;
-            Gender=patient.Gender;
+            FirstName = patient.FirstName;
+            LastName = patient.LastName;
+            Birthdate = patient.Birthdate;
+            PhoneNumber = patient.PhoneNumber;
+            Gender = patient.Gender;
             Id = patient.Id;
         }
         private void OnSave()
@@ -40,7 +38,7 @@ namespace Hospital.ViewModels.Dialogs
                 Birthdate = this.Birthdate,
                 PhoneNumber = this.PhoneNumber,
                 Gender = this.Gender,
-                Id=this.Id
+                Id = this.Id
             };
             _patientsService.Update(patient);
             MessageBox.Show($"Patient {FirstName} {LastName} was successfully updated!", "Success", MessageBoxButton.OK, MessageBoxImage.Question);

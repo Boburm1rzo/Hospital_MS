@@ -12,7 +12,7 @@ public class PatientsService
     {
         _context = new HospitalDBContext();
     }
-    public List<Patient> GetPatients(string searchText = "")
+    public List<Patient> GetPatients(string searchText = "", int currentPage = 1, int pageSize = 15)
     {
         var query = _context.Patients
             .Include(x => x.Appointments)
@@ -28,8 +28,12 @@ public class PatientsService
                                             x.LastName.Contains(searchText) ||
                                             x.PhoneNumber.Contains(searchText));
         }
-        return query.ToList();
+        return query
+            .Skip((currentPage - 1) * pageSize)
+            .Take(pageSize)
+            .ToList();
     }
+    public int GetTotalCount() => _context.Patients.Count();
     public Patient? GetPatientsById(int id)
         => _context.Patients.FirstOrDefault(x => x.Id == id);
     public void Create(Patient patient)
