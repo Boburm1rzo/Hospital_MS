@@ -1,14 +1,12 @@
 ﻿<Window
-    x:Class="Hospital.Views.Dialogs.PatientsDialog"
+    x:Class="Hospital.Views.Dialogs.PatientsUpdateDialog"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:colors="clr-namespace:MaterialDesignColors;assembly=MaterialDesignColors"
-    xmlns:colorsDomain="http://materialdesigninxaml.net/winfx/xaml/themes"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="clr-namespace:Hospital.Views.Dialogs"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:md="http://materialdesigninxaml.net/winfx/xaml/themes"
-    Title="{Binding Title}"
+    Title="PatientsUpdateDialog"
     Width="600"
     Height="650"
     ResizeMode="NoResize"
@@ -39,47 +37,38 @@
             FontSize="24"
             FontWeight="Bold" />
         <TextBox
-            x:Name="FirstNameInput"
             Grid.Row="1"
             Grid.ColumnSpan="3"
             Height="40"
             Margin="20,0"
             Padding="10"
-            md:HintAssist.Hint="Enter First Name"
             Style="{StaticResource MaterialDesignOutlinedTextBox}"
             Text="{Binding FirstName}" />
         <TextBox
-            x:Name="LastNameInput"
             Grid.Row="1"
             Grid.Column="3"
             Grid.ColumnSpan="3"
             Height="40"
             Margin="20,0"
             Padding="10"
-            md:HintAssist.Hint="Enter Last Name"
             Style="{StaticResource MaterialDesignOutlinedTextBox}"
             Text="{Binding LastName}" />
         <DatePicker
-            x:Name="DateInput"
             Grid.Row="2"
             Grid.ColumnSpan="2"
             Height="40"
             Margin="20,0"
-            Padding="10"
-            md:HintAssist.Hint="Pick Birthdate"
             SelectedDate="{Binding Birthdate}"
+            Padding="10"
             Style="{StaticResource MaterialDesignOutlinedDatePicker}" />
         <ComboBox
-            x:Name="GenderInput"
             Grid.Row="2"
             Grid.Column="2"
             Grid.ColumnSpan="2"
             Height="40"
             Margin="20,0"
             Padding="10"
-            md:HintAssist.Hint="Select Gender"
             md:TextFieldAssist.HasClearButton="True"
-            SelectedItem="{Binding Gender}"
             Style="{StaticResource MaterialDesignOutlinedComboBox}">
             <ComboBoxItem Content="Male" />
             <ComboBoxItem Content="Female" />
@@ -92,7 +81,6 @@
             Height="40"
             Margin="20,0"
             Padding="10"
-            md:HintAssist.Hint="Enter Phone Number"
             Style="{StaticResource MaterialDesignOutlinedTextBox}"
             Text="{Binding PhoneNumber}" />
         <Button

@@ -11,7 +11,7 @@ namespace Hospital.ViewModels.Dialogs
         private readonly PatientsService _patientsService;
         public string FirstName { get; set; }
         public string LastName { get; set; }
-        public DateOnly Birthdate { get ; set; }
+        public DateOnly Birthdate { get; set; }
         public string PhoneNumber { get; set; }
         public Gender Gender { get; set; }
         public ICommand SaveCommand { get; }
@@ -24,13 +24,14 @@ namespace Hospital.ViewModels.Dialogs
         {
             var patient = new Patient()
             {
-                FirstName=this.FirstName,
-                LastName=this.LastName,
-                Gender=this.Gender, 
-                PhoneNumber=this.PhoneNumber,
-                Birthdate=this.Birthdate,
+                FirstName = FirstName,
+                LastName = LastName,
+                Birthdate = Birthdate,
+                PhoneNumber = PhoneNumber,
+                Gender = Gender
             };
-                _patientsService.Create(patient);
+            _patientsService.Create(patient);
         }
+
     }
 }

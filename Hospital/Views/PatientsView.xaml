@@ -62,18 +62,8 @@
                 </DataGrid.InputBindings>
                 <DataGrid.ContextMenu>
                     <ContextMenu>
-                        <MenuItem Command="{Binding EditCommand}" CommandParameter="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ContextMenu}}, Path=PlacementTarget.selectedItem}">
-                            <MenuItem.Icon>
-                                <materialDesign:PackIcon Foreground="Tomato" Kind="Pencil" />
-                            </MenuItem.Icon>
-                            <MenuItem.Header>
-                                <Label
-                                    Content="Edit"
-                                    FontWeight="Bold"
-                                    Foreground="Tomato" />  
-                            </MenuItem.Header>
-                        </MenuItem>
-                        <MenuItem Command="{Binding ShowDetailsCommadn}" CommandParameter="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ContextMenu}}, Path=PlacementTarget.selectedItem}">
+
+                        <MenuItem Command="{Binding ShowDetailsCommand}" CommandParameter="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ContextMenu}}, Path=PlacementTarget.selectedItem}">
                             <MenuItem.Icon>
                                 <materialDesign:PackIcon Foreground="#c79d20" Kind="Details" />
                             </MenuItem.Icon>
@@ -84,7 +74,17 @@
                                     Foreground="#c79d20" />
                             </MenuItem.Header>
                         </MenuItem>
-
+                        <MenuItem Command="{Binding EditCommand}" CommandParameter="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ContextMenu}}, Path=PlacementTarget.selectedItem}">
+                            <MenuItem.Icon>
+                                <materialDesign:PackIcon Foreground="Tomato" Kind="Pencil" />
+                            </MenuItem.Icon>
+                            <MenuItem.Header>
+                                <Label
+                                    Content="Edit"
+                                    FontWeight="Bold"
+                                    Foreground="Tomato" />
+                            </MenuItem.Header>
+                        </MenuItem>
                         <MenuItem Command="{Binding DeleteCommand}" CommandParameter="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ContextMenu}}, Path=PlacementTarget.SelectedItem}">
                             <MenuItem.Icon>
                                 <materialDesign:PackIcon Foreground="#a32e45" Kind="TrashCan" />

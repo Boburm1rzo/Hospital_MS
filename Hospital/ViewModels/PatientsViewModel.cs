@@ -71,7 +71,7 @@ namespace Hospital.ViewModels
         }
         public void OnEdit()
         {
-            var dialog = new PatientsDialog(SelectedPatient);
+            var dialog = new PatientsUpdateDialog(SelectedPatient);
             dialog.ShowDialog();
         }
         public void OnDelete(Patient patient)

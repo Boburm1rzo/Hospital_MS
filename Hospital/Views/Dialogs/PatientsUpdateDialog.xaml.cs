@@ -1,17 +1,18 @@
 ﻿using Hospital.ViewModels.Dialogs;
+using HospitalManagementSystem.Models;
 using System.Windows;
 
 namespace Hospital.Views.Dialogs
 {
     /// <summary>
-    /// Interaction logic for PatientsDialog.xaml
+    /// Interaction logic for PatientsUpdateDialog.xaml
     /// </summary>
-    public partial class PatientsDialog : Window
+    public partial class PatientsUpdateDialog : Window
     {
-        public PatientsDialog()
+        public PatientsUpdateDialog(Patient patient)
         {
             InitializeComponent();
-            DataContext = new PatientDialogViewModel();
+            DataContext = new PatientsUpdateViewModel(patient);
         }
         private void CancelButton(object sender, RoutedEventArgs e)
         {
