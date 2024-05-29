@@ -126,7 +126,11 @@
             </DataGrid>
         </materialDesign:Card>
         <materialDesign:Card Grid.Row="2" Grid.ColumnSpan="2">
-            <dataPager:DataPager/>
+            <dataPager:DataPager
+                x:Name="pager"
+                Grid.Row="2"
+                Grid.ColumnSpan="3"
+                HorizontalAlignment="Right"/>
         </materialDesign:Card>
     </Grid>
 </UserControl>

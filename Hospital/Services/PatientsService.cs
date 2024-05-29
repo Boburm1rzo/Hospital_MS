@@ -12,7 +12,7 @@ public class PatientsService
     {
         _context = new HospitalDBContext();
     }
-    public List<Patient> GetPatients(string searchText = "", int currentPage = 1, int pageSize = 15)
+    public List<Patient> GetPatients(string searchText = "", int currentPage = 1, int pageSize = 20)
     {
         var query = _context.Patients
             .Include(x => x.Appointments)

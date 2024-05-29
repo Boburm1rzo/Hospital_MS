@@ -14,16 +14,16 @@
     <StackPanel Orientation="Horizontal">
         <Button
             Margin="20,5,10,10"
-            Background="Transparent"
+            Background="Lightblue"
             Command="{Binding PreviousPageCommand}"
             Content="Previous"
-            Foreground="Blue"
+            Foreground="Black"
             IsEnabled="{Binding HasPreviousPage, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
         <Button
             Margin="0,5,0,10"
             Background="{Binding IsFirstPageSelected, Converter={StaticResource PaginationBackgroundConvertor}}"
             Command="{Binding FirstPageCommand}"
-            Content="{Binding FirstButtonContetn}"
+            Content="{Binding FirstButtonContent}"
             Foreground="{Binding IsFirstPageSelected, Converter={StaticResource PaginationForegroundConvertor}}" />
         <Button
             Margin="0,5,0,10"
@@ -41,25 +41,27 @@
             Visibility="{Binding HasThirdPage, Converter={StaticResource BooleanToVisibilityConverter}}" />
         <Button
             Margin="10,5,20,10"
-            Background="Transparent"
+            Background="Lightblue"
             Command="{Binding NextPageCommand}"
             Content="Next"
-            Foreground="Blue"
+            Foreground="Black"
             IsEnabled="{Binding HasNextPage, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+
         <Button
             Background="{Binding IsFirstSizeSelected, Converter={StaticResource PaginationBackgroundConvertor}}"
-            Command="{Binding FirstSizeCommand}"
-            Content="15"
+            Command="{Binding FirstPageSizeCommand}"
+            Content="20"
             Foreground="{Binding IsFirstSizeSelected, Converter={StaticResource PaginationForegroundConvertor}}" />
         <Button
             Background="{Binding IsSecondSizeSelected, Converter={StaticResource PaginationBackgroundConvertor}}"
-            Command="{Binding SecondSizeCommand}"
+            Command="{Binding SecondPageSizeCommand}"
             Content="30"
             Foreground="{Binding IsSecondSizeSelected, Converter={StaticResource PaginationForegroundConvertor}}" />
         <Button
             Background="{Binding IsThirdSizeSelected, Converter={StaticResource PaginationBackgroundConvertor}}"
-            Command="{Binding ThirdSizeCommand}"
+            Command="{Binding ThirdPageSizeCommand}"
             Content="50"
+            Margin="0,0,10,0"
             Foreground="{Binding IsThirdSizeSelected, Converter={StaticResource PaginationForegroundConvertor}}" />
     </StackPanel>
 

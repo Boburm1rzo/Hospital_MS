@@ -5,7 +5,6 @@ using MvvmHelpers;
 using MvvmHelpers.Commands;
 using System.Collections.ObjectModel;
 using System.Windows;
-using System.Windows.Forms;
 using System.Windows.Input;
 using MessageBox = System.Windows.MessageBox;
 
@@ -73,7 +72,7 @@ namespace Hospital.ViewModels
             set => SetProperty(ref _totalPatientsCount, value);
         }
         private int pagesCount;
-        private int pageSize = 15;
+        private int pageSize = 20;
         private int _currentPage = 1;
         public int CurrentPage
         {
@@ -141,7 +140,7 @@ namespace Hospital.ViewModels
             set => SetProperty(ref _isSecondSizeSelected, value);
         }
 
-        private bool _isThirdSizeSelected = true;
+        private bool _isThirdSizeSelected = false;
         public bool IsThirdSizeSelected
         {
             get => _isThirdSizeSelected;
@@ -184,44 +183,18 @@ namespace Hospital.ViewModels
         }
         private void OnPreviousPage()
         {
-            if (_currentPage < 1)
+            if (_currentPage <= 1)
+            {
                 return;
+            }
 
             CurrentPage -= 3;
             FirstButtonContent -= 3;
             SecondButtonContent -= 3;
-            ThirdButtonContent -= 3;
-        }
-        private void OnFirstPage()
-        {
-            IsFirstPageSelected = true;
-            IsSecondPageSelected=false;
-            IsThirdPageSelected=false;
-
-            CurrentPage=FirstButtonContent;
-            ApplyFilters();
-        }
-        private void OnSecondPage()
-        {
-            IsFirstPageSelected = true;
-            IsSecondPageSelected = false;
-            IsThirdPageSelected = false;
-         
-            CurrentPage=SecondButtonContent;
-            ApplyFilters();
-        }
-        private void OnThirdPage()
-        {
-            IsFirstPageSelected = true;
-            IsSecondPageSelected = false;
-            IsThirdPageSelected = false;
-            
-            CurrentPage=ThirdButtonContent;
-            ApplyFilters();
         }
         private void OnNextPage()
         {
-            if (_currentPage > pagesCount)
+            if (_currentPage >= pagesCount)
             {
                 return;
             }
@@ -239,12 +212,39 @@ namespace Hospital.ViewModels
             CurrentPage = FirstButtonContent;
             ApplyFilters();
         }
+        private void OnFirstPage()
+        {
+            IsFirstPageSelected = true;
+            IsSecondPageSelected = false;
+            IsThirdPageSelected = false;
+
+            CurrentPage = FirstButtonContent;
+            ApplyFilters();
+        }
+        private void OnSecondPage()
+        {
+            IsFirstPageSelected = false;
+            IsSecondPageSelected = true;
+            IsThirdPageSelected = false;
+
+            CurrentPage = SecondButtonContent;
+            ApplyFilters();
+        }
+        private void OnThirdPage()
+        {
+            IsFirstPageSelected = false;
+            IsSecondPageSelected = false;
+            IsThirdPageSelected = true;
+
+            CurrentPage = ThirdButtonContent;
+            ApplyFilters();
+        }
         private void OnFirstPageSize()
         {
             IsFirstSizeSelected = true;
             IsSecondSizeSelected = false;
             IsThirdSizeSelected = false;
-            pageSize = 15;
+            pageSize = 20;
             pagesCount = (int)Math.Ceiling((double)_totalPatientsCount / pageSize);
 
             ApplyFilters();
@@ -255,7 +255,7 @@ namespace Hospital.ViewModels
             IsSecondSizeSelected = true;
             IsThirdSizeSelected = false;
 
-            pageSize = 20;
+            pageSize = 30;
             pagesCount = (int)Math.Ceiling((double)_totalPatientsCount / pageSize);
 
             ApplyFilters();
